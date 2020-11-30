@@ -2,17 +2,39 @@ import React, {useState} from 'react'
 import Header from "./Header"
 import Footer from "./Footer"
 import Note from "./Note"
+import NoteInput from './NoteInput'
 
 
 const App = () => {
-const [note, setNote] = useState({
-    title: "title", 
-    content : "content"
-})
-    return (
+    const [newNotes, setNewNotes] = useState([]);
+
+   const addNote = (note) =>{
+    setNewNotes(prevNote => {
+       return [...prevNote, note]
+     })
+   }
+
+   const deleteNote = (id) =>{
+    setNewNotes(prevNote => {
+      prevNote.filter((note, index) => index !== id)
+     })
+   } 
+   
+   return (
         <div>
         <Header/>
-        <Note note={note}/>
+        <NoteInput addNote={addNote}/>
+        {newNotes && newNotes.map((note, i)=>{
+         return(
+            <Note 
+            key={i}
+            id={i}
+            deleteNote={deleteNote}
+            title={note.title}
+            content={note.content}
+            />
+         ) 
+        })}
         <Footer/>
         </div>
     )
