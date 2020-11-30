@@ -1,15 +1,11 @@
 import React from 'react'
 
-const Note = ({notes}) => {
+const Note = ({ note }) => {
     return (
-        notes.map((note)=>{
-            return (
-                <div className="note" key={note.key}>
-                    <h1>{note.title}</h1>
-                    <p>{note.content}</p>
+                <div className="note">
+                    <h1>Title: {note.title}</h1>
+                    <p>Content: {note.content}</p>
                 </div>
-            )
-        })
     )
 }
 
