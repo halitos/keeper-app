@@ -1,10 +1,20 @@
 import React, {useState} from 'react'
+import AddIcon from '@material-ui/icons/Add';
+import Fab from '@material-ui/core/Fab';
+import Zoom from '@material-ui/core/Zoom';
+
 
 const NoteInput = ({addNote}) => {
 const [note, setNote] = useState({
     title: "", 
     content : ""
 })
+
+const [display, setDisplay] = useState(false);
+
+const handlePopup = () =>{
+setDisplay(true);
+}
 
 const handleChange = (e) => {
     const {name, value} = e.target;
@@ -18,22 +28,32 @@ const handleChange = (e) => {
 
 const submitNote = (e) =>{
     e.preventDefault();
-    addNote(note);
+    note.title ? addNote(note) : alert("please fill before add");
     setNote({
         title: "", 
         content : ""
     })
+    setDisplay(false);
 }
     return (
-        <form>
-            <input name="title" onChange={handleChange} value={note.title} placeholder="Title"/>
+        <form className="create-note">
+                {display && <input 
+                name="title" 
+                onChange={handleChange} 
+                value={note.title} 
+                placeholder="Title"
+            />}
             <textarea 
-            name="content" 
-            onChange={handleChange}
-            value={note.content} 
-            placeholder="Notes..."
+                onClick={handlePopup}
+                name="content" 
+                onChange={handleChange}
+                value={note.content} 
+                placeholder="Notes..."
+                rows={display ? "3" : "1"}
             />
-            <button onClick={submitNote} >Add</button>
+            <Zoom in={display}>
+                <Fab onClick={submitNote} ><AddIcon/></Fab>
+            </Zoom>
         </form>
     )
 }
