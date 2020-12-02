@@ -16,7 +16,7 @@ const App = () => {
 
    const deleteNote = (id) =>{
     setNewNotes(prevNote => {
-      prevNote.filter((note, index) => index !== id)
+     return prevNote.filter((note, index) => index !== id)
      })
    } 
    
