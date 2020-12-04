@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Header from "./Header"
 import Footer from "./Footer"
 import Note from "./Note"
@@ -7,6 +7,19 @@ import NoteInput from './NoteInput'
 
 const App = () => {
     const [newNotes, setNewNotes] = useState([]);
+
+  useEffect(() => {
+    fetch("https://halit-chat-server.herokuapp.com/messages")
+    .then(data => data.json())
+    .then((res) => {
+      console.log(res);
+      setNewNotes(prevNote => {
+        return [...prevNote, res]
+      });
+    })
+    .catch(error => console.log(error));
+    console.log(newNotes);
+  }, [])
 
    const addNote = (note) =>{
     setNewNotes(prevNote => {
