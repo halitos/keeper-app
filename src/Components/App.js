@@ -6,19 +6,18 @@ import NoteInput from './NoteInput'
 
 
 const App = () => {
-    const [newNotes, setNewNotes] = useState([]);
+  const [newNotes, setNewNotes] = useState([]);
 
   useEffect(() => {
-    fetch("https://halit-chat-server.herokuapp.com/messages")
+    fetch("https://halit-chat-server.glitch.me/messages")
     .then(data => data.json())
     .then((res) => {
       console.log(res);
       setNewNotes(prevNote => {
-        return [...prevNote, res]
+        return [...prevNote, res[0]]
       });
     })
     .catch(error => console.log(error));
-    console.log(newNotes);
   }, [])
 
    const addNote = (note) =>{
