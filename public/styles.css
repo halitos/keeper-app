@@ -31,7 +31,7 @@ footer {
   text-align: center;
   bottom: 0;
   width: 100%;
-  height: 2.5rem;
+  height: 2rem;
 }
 
 footer p {
@@ -71,7 +71,7 @@ footer p {
 
 form.create-note {
   position: relative;
-  width: 480px;
+  width: 30rem;
   margin: 30px auto 20px auto;
   background: #fff;
   padding: 15px;
@@ -101,4 +101,13 @@ form.create-note button {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   outline: none;
+}
+
+@media (max-width: 500px) {
+  form.create-note {
+    width: 18rem;
+  }
+  header {
+    margin: 0px -25px;
+  }
 }

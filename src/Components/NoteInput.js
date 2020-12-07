@@ -27,7 +27,7 @@ const NoteInput = ({ addNote }) => {
 
   const submitNote = (e) => {
     e.preventDefault();
-    note.title ? addNote(note) : alert("please fill before add");
+    note.title ? addNote(note) : alert("Please enter note title");
     setNote({
       title: "",
       content: "",
