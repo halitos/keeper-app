@@ -5,19 +5,24 @@ import Note from "./Note";
 import NoteInput from "./NoteInput";
 
 const App = () => {
-  const [newNotes, setNewNotes] = useState([]);
-  const url = "https://halit-chat-server.glitch.me/messages";
+  const [newNotes, setNewNotes] = useState([
+    {
+      title: "Wellcome",
+      content: "Please add more notes",
+    },
+  ]);
+  // const url = "https://halit-chat-server.glitch.me/messages";
 
-  useEffect(() => {
-    fetch(url)
-      .then((data) => data.json())
-      .then((res) => {
-        setNewNotes((prevNote) => {
-          return [...prevNote, ...res];
-        });
-      })
-      .catch((error) => console.log(error));
-  }, []);
+  // useEffect(() => {
+  //   fetch(url)
+  //     .then((data) => data.json())
+  //     .then((res) => {
+  //       setNewNotes((prevNote) => {
+  //         return [...prevNote, ...res];
+  //       });
+  //     })
+  //     .catch((error) => console.log(error));
+  // }, []);
 
   const addNote = (note) => {
     setNewNotes((prevNote) => {
