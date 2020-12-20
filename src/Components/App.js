@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import Note from "./Note";
@@ -11,18 +11,6 @@ const App = () => {
       content: "Please add more notes",
     },
   ]);
-  // const url = "https://halit-chat-server.glitch.me/messages";
-
-  // useEffect(() => {
-  //   fetch(url)
-  //     .then((data) => data.json())
-  //     .then((res) => {
-  //       setNewNotes((prevNote) => {
-  //         return [...prevNote, ...res];
-  //       });
-  //     })
-  //     .catch((error) => console.log(error));
-  // }, []);
 
   const addNote = (note) => {
     setNewNotes((prevNote) => {
